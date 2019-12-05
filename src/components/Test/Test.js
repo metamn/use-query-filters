@@ -15,7 +15,7 @@ const defaultProps = {};
  * Displays the component
  */
 const Test = props => {
-  return <div className="Test">Test</div>;
+  return <div className="Test">Test, modified</div>;
 };
 
 Test.propTypes = propTypes;

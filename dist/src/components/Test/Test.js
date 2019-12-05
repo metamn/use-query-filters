@@ -30,7 +30,7 @@ exports.TestDefaultProps = defaultProps;
 var Test = function Test(props) {
   return _react.default.createElement("div", {
     className: "Test"
-  }, "Test");
+  }, "Test, modified");
 };
 
 Test.propTypes = propTypes;
