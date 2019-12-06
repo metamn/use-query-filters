@@ -2,5 +2,6 @@ export {
   default,
   QueryFiltersPropTypes,
   QueryFiltersDefaultProps,
-  displayQueryFilters
+  displayQueryFilters,
+  SupportedFilters
 } from "./QueryFilters";

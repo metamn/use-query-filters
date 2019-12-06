@@ -27,6 +27,46 @@ const defaultProps = {
 };
 
 /**
+ * Defines which filter types are supported.
+ * - Also defines which query param type is supported by a filter.
+ * - Also defines how the query value should look like
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+ * @see https://github.com/pbeshai/use-query-params#param-types
+ */
+const SupportedFilters = [
+  {
+    filter: "text",
+    paramTypes: ["StringParam"],
+    paramValues: PropTypes.string
+  },
+  {
+    filter: "checkbox",
+    paramTypes: ["DelimitedArrayParam", "DelimitedNumericArrayParam"],
+    paramValues: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  },
+  {
+    filter: "select",
+    paramTypes: ["StringParam"],
+    paramValues: PropTypes.string
+  },
+  {
+    filter: "radio",
+    paramTypes: ["StringParam"],
+    paramValues: PropTypes.string
+  },
+  {
+    filter: "range-multi-handle",
+    paramTypes: ["DelimitedNumericArrayParam"],
+    paramValues: PropTypes.shape({
+      min: PropTypes.number,
+      max: PropTypes.number
+    })
+  }
+];
+
+/**
  * Displays the query filters
  *
  * - Only the well defined filters will be displayed
@@ -59,5 +99,6 @@ export default QueryFilters;
 export {
   propTypes as QueryFiltersPropTypes,
   defaultProps as QueryFiltersDefaultProps,
+  SupportedFilters,
   displayQueryFilters
 };

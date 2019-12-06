@@ -1,6 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import {
+  StringParam,
+  DelimitedArrayParam,
+  DelimitedNumericArrayParam
+} from "use-query-params";
+
 /**
  * Defines the prop types
  *
@@ -28,6 +34,30 @@ const defaultProps = {
 };
 
 /**
+ * Defines which param types are implemented from `use-query-params`
+ *
+ * - Only these can be added as `type`
+ *
+ * @see https://github.com/pbeshai/use-query-params#param-types
+ */
+const SupportedParamTypes = [
+  StringParam,
+  DelimitedNumericArrayParam,
+  DelimitedArrayParam
+];
+
+/**
+ * Defines the string correspondent to a param type
+ *
+ * - The filters will use these values to define the param types.
+ */
+const SupportedParamTypesAsString = [
+  "StringParam",
+  "DelimitedNumericArrayParam",
+  "DelimitedArrayParam"
+];
+
+/**
  * Displays the component
  */
 const QueryParam = props => {
@@ -40,5 +70,7 @@ QueryParam.defaultProps = defaultProps;
 export default QueryParam;
 export {
   propTypes as QueryParamPropTypes,
-  defaultProps as QueryParamDefaultProps
+  defaultProps as QueryParamDefaultProps,
+  SupportedParamTypes,
+  SupportedParamTypesAsString
 };

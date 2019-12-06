@@ -1,5 +1,7 @@
 export {
   default,
   QueryParamPropTypes,
-  QueryParamDefaultProps
+  QueryParamDefaultProps,
+  SupportedParamTypes,
+  SupportedParamTypesAsString
 } from "./QueryParam";

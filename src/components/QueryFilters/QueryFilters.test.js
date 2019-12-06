@@ -4,6 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import QueryFilters, {
   QueryFiltersPropTypes,
+  SupportedFilters,
   displayQueryFilters
 } from "./QueryFilters";
 
@@ -16,6 +17,11 @@ describe("The QueryFilters component", function() {
   it("Has a `filters` input prop", () => {
     const { filters } = QueryFiltersPropTypes;
     expect(filters).toBeDefined();
+  });
+
+  it("Defines a set of supported filters", () => {
+    const length = SupportedFilters.length;
+    expect(length).toBeDefined();
   });
 
   it("Offers a `displayQueryFilters` function", () => {
