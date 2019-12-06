@@ -34,14 +34,19 @@ const CommonInputDefaultProps = {
 const InputWithItemsPropTypes = props => {
   const { inputType } = props;
 
+  /**
+   * Loads the value from `SupportedFilters`
+   */
+  const v = SupportedFilters.filter(item => item.filter === inputType)
+    .map(item => item.paramValues)
+    .shift();
+
   return {
     label: PropTypes.string,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string,
-        value: SupportedFilters.filter(item => item.filter === inputType).map(
-          item => item.paramValues
-        )
+        value: v
       })
     )
   };
@@ -54,9 +59,9 @@ const InputRangeMultiHandlePropTypes = {
   ...CommonInputPropTypes,
   min: PropTypes.number,
   max: PropTypes.number,
-  value: SupportedFilters.filter(
-    item => item.filter === "range-multi-handle"
-  ).map(item => item.paramValues)
+  value: SupportedFilters.filter(item => item.filter === "range-multi-handle")
+    .map(item => item.paramValues)
+    .shift()
 };
 
 /**
@@ -66,10 +71,10 @@ const InputRangeMultiHandleDefaultProps = {
   ...CommonInputDefaultProps,
   min: 0,
   max: 5,
-  value: PropTypes.shape({
+  value: {
     min: 1,
     max: 4
-  })
+  }
 };
 
 /**
@@ -162,14 +167,22 @@ const InputTextDefaultProps = {
  * Defines the prop types
  */
 const propTypes = {
-  ...InputTextPropTypes
+  ...InputTextPropTypes,
+  ...InputCheckboxPropTypes,
+  ...InputSelectPropTypes,
+  ...InputRadioPropTypes,
+  ...InputRangeMultiHandlePropTypes
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  ...InputTextDefaultProps
+  ...InputTextDefaultProps,
+  ...InputCheckboxDefaultProps,
+  ...InputSelectDefaultProps,
+  ...InputRadioDefaultProps,
+  ...InputRangeMultiHandleDefaultProps
 };
 
 /**
