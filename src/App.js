@@ -1,9 +1,9 @@
 import React from "react";
 
-import Test from "./components/Test";
+import QueryFilters from "./components/QueryFilters";
 
-function App() {
-  return <Test />;
-}
+const App = () => {
+  return <QueryFilters />;
+};
 
 export default App;
