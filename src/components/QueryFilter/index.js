@@ -1,5 +1,6 @@
 export {
   default,
   QueryFilterPropTypes,
-  QueryFilterDefaultProps
+  QueryFilterDefaultProps,
+  isFilterWellDefined
 } from "./QueryFilter";

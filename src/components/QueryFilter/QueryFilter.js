@@ -33,6 +33,13 @@ const defaultProps = {
 };
 
 /**
+ * Checks if a filter is well defined.
+ */
+const isFilterWellDefined = props => {
+  return true;
+};
+
+/**
  * Displays the component
  */
 const QueryFilter = props => {
@@ -45,5 +52,6 @@ QueryFilter.defaultProps = defaultProps;
 export default QueryFilter;
 export {
   propTypes as QueryFilterPropTypes,
-  defaultProps as QueryFilterDefaultProps
+  defaultProps as QueryFilterDefaultProps,
+  isFilterWellDefined
 };
