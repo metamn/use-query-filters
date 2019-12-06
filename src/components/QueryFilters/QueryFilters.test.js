@@ -2,9 +2,16 @@ import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import QueryFilters from "./QueryFilters";
+import QueryFilters, { QueryFiltersPropTypes } from "./QueryFilters";
 
-it("has a QueryFilters component", () => {
-  const { getByText } = render(<QueryFilters />);
-  expect(getByText("QueryFilters")).toBeInTheDocument();
+describe("The QueryFilters component", function() {
+  it("Renders a component with the `QueryFilters` class name", () => {
+    const { container } = render(<QueryFilters />);
+    expect(container.firstChild).toHaveClass("QueryFilters");
+  });
+
+  it("Has a `filters` input prop", () => {
+    const { filters } = QueryFiltersPropTypes;
+    expect(filters).toBeDefined();
+  });
 });
