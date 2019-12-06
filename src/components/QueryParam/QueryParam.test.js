@@ -5,7 +5,9 @@ import "@testing-library/jest-dom/extend-expect";
 import QueryParam, {
   QueryParamPropTypes,
   SupportedParamTypes,
-  SupportedParamTypesAsString
+  SupportedParamTypesAsString,
+  convertStringToQueryParamObject,
+  isParamTypeAsStringSupported
 } from "./QueryParam";
 
 describe("The QueryParam component", function() {
@@ -32,5 +34,13 @@ describe("The QueryParam component", function() {
   it("Defines a set of supported param types as strings", () => {
     const length = SupportedParamTypesAsString.length;
     expect(length).toBeDefined();
+  });
+
+  it("Offers an `convertStringToQueryParamObject` function", () => {
+    expect(convertStringToQueryParamObject).toBeDefined();
+  });
+
+  it("Offers an `isParamTypeAsStringSupported` function", () => {
+    expect(isParamTypeAsStringSupported).toBeDefined();
   });
 });

@@ -3,5 +3,7 @@ export {
   QueryParamPropTypes,
   QueryParamDefaultProps,
   SupportedParamTypes,
-  SupportedParamTypesAsString
+  SupportedParamTypesAsString,
+  convertStringToQueryParamObject,
+  isParamTypeAsStringSupported
 } from "./QueryParam";

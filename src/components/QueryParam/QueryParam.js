@@ -58,6 +58,31 @@ const SupportedParamTypesAsString = [
 ];
 
 /**
+ * Returns a query param type object from a string
+ */
+const convertStringToQueryParamObject = props => {
+  const { type } = props;
+
+  const index = isParamTypeAsStringSupported({ paramTypeAsString: type });
+
+  if (index === -1) {
+    console.log("Invalid param type:", type);
+    return null;
+  }
+
+  return SupportedParamTypes[index];
+};
+
+/**
+ * Checks if a param type string is supported
+ */
+const isParamTypeAsStringSupported = props => {
+  const { paramTypeAsString } = props;
+
+  return SupportedParamTypesAsString.indexOf(paramTypeAsString);
+};
+
+/**
  * Displays the component
  */
 const QueryParam = props => {
@@ -72,5 +97,7 @@ export {
   propTypes as QueryParamPropTypes,
   defaultProps as QueryParamDefaultProps,
   SupportedParamTypes,
-  SupportedParamTypesAsString
+  SupportedParamTypesAsString,
+  convertStringToQueryParamObject,
+  isParamTypeAsStringSupported
 };
