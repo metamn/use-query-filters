@@ -12,7 +12,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "doc": "scripty",
+    "docs": "scripty"
   },
   "browserslist": {
     "production": [
@@ -29,10 +31,13 @@
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-links": "^5.2.8",
+    "@storybook/addon-notes": "^5.2.8",
     "@storybook/addons": "^5.2.8",
     "@storybook/react": "^5.2.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "jsdoc-to-markdown": "^5.0.3",
+    "scripty": "^1.9.1"
   }
 }
