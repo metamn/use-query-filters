@@ -1,6 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import QueryParam, {
+  QueryParamDefaultProps,
+  QueryParamPropTypes
+} from "../QueryParam";
+
 /**
  * Defines the prop types
  */
@@ -14,7 +19,7 @@ const propTypes = {
    *
    * @see https://github.com/pbeshai/use-query-params
    */
-  queryParam: PropTypes.string.isRequired,
+  queryParam: PropTypes.shape(QueryParamPropTypes).isRequired,
   /**
    * The input control to display and manage the filter behavior
    *
@@ -28,7 +33,7 @@ const propTypes = {
  */
 const defaultProps = {
   label: "Filter title",
-  queryParam: "xxx",
+  queryParam: QueryParamDefaultProps,
   input: "xxx"
 };
 
