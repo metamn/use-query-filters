@@ -1,5 +1,5 @@
 export {
-  default,
+  InputCheckbox,
   InputCheckboxPropTypes,
   InputCheckboxDefaultProps
 } from "./InputCheckbox";

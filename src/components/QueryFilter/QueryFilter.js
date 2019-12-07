@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import { QueryParamDefaultProps, QueryParamPropTypes } from "../QueryParam";
 import { QueryInputDefaultProps, QueryInputPropTypes } from "../QueryInput";
-import { SupportedFilters } from "../QueryFilters";
+import { SupportedFilters, QueryFiltersThemeContext } from "../QueryFilters";
 
 /**
  * Defines the prop types
@@ -75,7 +75,25 @@ const isFilterWellDefined = props => {
  * Displays the component
  */
 const QueryFilter = props => {
-  return <div className="QueryFilter">QueryFilter</div>;
+  const { label, input, queryParam } = props;
+  const { type } = input;
+
+  const { InputCheckbox } = useContext(QueryFiltersThemeContext);
+
+  const params = { label, queryParam, ...input };
+
+  let result = null;
+
+  switch (type) {
+    case "text":
+      result = <InputCheckbox {...params} />;
+      break;
+
+    default:
+      break;
+  }
+
+  return <div className="QueryFilter">{result}</div>;
 };
 
 QueryFilter.propTypes = propTypes;

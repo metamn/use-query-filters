@@ -15,14 +15,14 @@ const defaultProps = {};
  * Displays the component
  */
 const InputCheckbox = props => {
-  return <div className="InputCheckbox">InputCheckbox</div>;
+  return <div className="InputCheckbox">InputCheckbox Naked</div>;
 };
 
 InputCheckbox.propTypes = propTypes;
 InputCheckbox.defaultProps = defaultProps;
 
-export default InputCheckbox;
 export {
+  InputCheckbox,
   propTypes as InputCheckboxPropTypes,
   defaultProps as InputCheckboxDefaultProps
 };

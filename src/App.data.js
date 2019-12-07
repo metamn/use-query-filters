@@ -98,7 +98,7 @@ const dataDefault = {
   ]
 };
 
-const dataWakibi = {
+const dataTest1 = {
   groups: [
     {
       label: "Borrowers",
@@ -355,4 +355,4 @@ const dataWakibi = {
   ]
 };
 
-export { dataWakibi, dataDefault };
+export { dataDefault, dataTest1 };

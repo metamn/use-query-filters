@@ -3,5 +3,6 @@ export {
   QueryFiltersPropTypes,
   QueryFiltersDefaultProps,
   displayQueryFilters,
-  SupportedFilters
+  SupportedFilters,
+  QueryFiltersThemeContext
 } from "./QueryFilters";

@@ -10,7 +10,7 @@ import QueryFilter, {
 
 import { dataDefault } from "../../App.data";
 
-import { InputCheckboxNaked } from "../themes*";
+import { InputCheckboxNaked } from "../themes/naked";
 
 /**
  * Defines the prop types
@@ -97,7 +97,7 @@ const displayQueryFilters = props => {
   );
 };
 
-const ThemeContext = React.createContext("light");
+const QueryFiltersThemeContext = React.createContext();
 
 /**
  * Displays the component
@@ -105,22 +105,12 @@ const ThemeContext = React.createContext("light");
 const QueryFilters = props => {
   const { theme } = props;
 
-  let themeContext = {};
-  switch (theme) {
-    case "naked":
-      themeContext = {
-        InputCheckbox: InputCheckboxNaked
-      };
-      break;
-
-    default:
-      break;
-  }
+  let queryFiltersThemeContext = { InputCheckbox: InputCheckboxNaked };
 
   return (
-    <ThemeContext.Provider value={themeContext}>
+    <QueryFiltersThemeContext.Provider value={queryFiltersThemeContext}>
       <div className="QueryFilters">{displayQueryFilters(props)}</div>
-    </ThemeContext.Provider>
+    </QueryFiltersThemeContext.Provider>
   );
 };
 
@@ -132,5 +122,6 @@ export {
   propTypes as QueryFiltersPropTypes,
   defaultProps as QueryFiltersDefaultProps,
   SupportedFilters,
-  displayQueryFilters
+  displayQueryFilters,
+  QueryFiltersThemeContext
 };
