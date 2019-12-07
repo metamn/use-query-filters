@@ -2,18 +2,18 @@ import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import QueryInput, {
+import Input, {
   InputTextPropTypes,
   InputCheckboxPropTypes,
   InputSelectPropTypes,
   InputRadioPropTypes,
   InputRangeMultiHandlePropTypes
-} from "./QueryInput";
+} from "./Input";
 
-describe("The QueryInput component", function() {
-  it("Renders a component with the `QueryInput` class name", () => {
-    const { container } = render(<QueryInput />);
-    expect(container.firstChild).toHaveClass("QueryInput");
+describe("The Input component", function() {
+  it("Renders a component with the `Input` class name", () => {
+    const { container } = render(<Input />);
+    expect(container.firstChild).toHaveClass("Input");
   });
 
   it("Defines input types for Text", () => {

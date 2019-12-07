@@ -1,7 +1,7 @@
 export {
   default,
-  QueryInputPropTypes,
-  QueryInputDefaultProps,
+  InputPropTypes,
+  InputDefaultProps,
   InputTextPropTypes,
   InputTextDefaultProps,
   InputCheckboxPropTypes,
@@ -12,4 +12,4 @@ export {
   InputSelectDefaultProps,
   InputRangeMultiHandlePropTypes,
   InputRangeMultiHandleDefaultProps
-} from "./QueryInput";
+} from "./Input";

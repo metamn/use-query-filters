@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 
 import { QueryParamDefaultProps, QueryParamPropTypes } from "../QueryParam";
-import { QueryInputDefaultProps, QueryInputPropTypes } from "../QueryInput";
-import { SupportedFilters, QueryFiltersThemeContext } from "../QueryFilters";
+import { InputDefaultProps, InputPropTypes } from "../Input";
+import { SupportedFilters, FiltersThemeContext } from "../Filters";
 
 /**
  * Defines the prop types
@@ -24,7 +24,7 @@ const propTypes = {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
    */
-  input: PropTypes.shape(QueryInputPropTypes).isRequired
+  input: PropTypes.shape(InputPropTypes).isRequired
 };
 
 /**
@@ -33,7 +33,7 @@ const propTypes = {
 const defaultProps = {
   label: "Filter title",
   queryParam: QueryParamDefaultProps,
-  input: QueryInputDefaultProps
+  input: InputDefaultProps
 };
 
 /**
@@ -74,7 +74,7 @@ const isFilterWellDefined = props => {
 /**
  * Displays the component
  */
-const QueryFilter = props => {
+const Filter = props => {
   const { label, queryParam, input } = props;
   const { type } = input;
 
@@ -84,7 +84,7 @@ const QueryFilter = props => {
     InputSelect,
     InputRangeMultiHandle,
     InputRadio
-  } = useContext(QueryFiltersThemeContext);
+  } = useContext(FiltersThemeContext);
 
   const params = { label, queryParam, ...input };
 
@@ -116,15 +116,15 @@ const QueryFilter = props => {
       break;
   }
 
-  return <div className="QueryFilter">{result}</div>;
+  return <div className="Filter">{result}</div>;
 };
 
-QueryFilter.propTypes = propTypes;
-QueryFilter.defaultProps = defaultProps;
+Filter.propTypes = propTypes;
+Filter.defaultProps = defaultProps;
 
-export default QueryFilter;
+export default Filter;
 export {
-  propTypes as QueryFilterPropTypes,
-  defaultProps as QueryFilterDefaultProps,
+  propTypes as FilterPropTypes,
+  defaultProps as FilterDefaultProps,
   isFilterWellDefined
 };

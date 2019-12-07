@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import QueryFilter, {
+import Filter, {
   isFilterWellDefined,
-  QueryFilterPropTypes
+  FilterPropTypes
   // This is for testing purposes only
-  // QueryFilterDefaultProps
-} from "../QueryFilter";
+  // FilterDefaultProps
+} from "../Filter";
 
 import { dataDefault } from "../../App.data";
 
@@ -27,7 +27,7 @@ const propTypes = {
    *
    * @see App.data.js for the syntax
    */
-  filters: PropTypes.arrayOf(PropTypes.shape(QueryFilterPropTypes)),
+  filters: PropTypes.arrayOf(PropTypes.shape(FilterPropTypes)),
   /**
    * Defines the renderers which will render the input controls
    */
@@ -39,7 +39,7 @@ const propTypes = {
  */
 const defaultProps = {
   // This is for testing purposes only
-  // filters: Array(1).fill(QueryFilterDefaultProps)
+  // filters: Array(1).fill(FilterDefaultProps)
   filters: dataDefault.filters,
   renderers: {
     InputCheckbox: InputCheckboxNaked,
@@ -95,7 +95,7 @@ const SupportedFilters = [
  *
  * - Only the well defined filters will be displayed
  */
-const displayQueryFilters = props => {
+const displayFilters = props => {
   const { filters } = props;
 
   return (
@@ -103,35 +103,35 @@ const displayQueryFilters = props => {
     filters.map &&
     filters.map((filter, index) => {
       return isFilterWellDefined({ filter: filter }) ? (
-        <QueryFilter key={index} {...filter} />
+        <Filter key={index} {...filter} />
       ) : null;
     })
   );
 };
 
-const QueryFiltersThemeContext = React.createContext();
+const FiltersThemeContext = React.createContext();
 
 /**
  * Displays the component
  */
-const QueryFilters = props => {
+const Filters = props => {
   const { renderers } = props;
 
   return (
-    <QueryFiltersThemeContext.Provider value={renderers}>
-      <div className="QueryFilters">{displayQueryFilters(props)}</div>
-    </QueryFiltersThemeContext.Provider>
+    <FiltersThemeContext.Provider value={renderers}>
+      <div className="Filters">{displayFilters(props)}</div>
+    </FiltersThemeContext.Provider>
   );
 };
 
-QueryFilters.propTypes = propTypes;
-QueryFilters.defaultProps = defaultProps;
+Filters.propTypes = propTypes;
+Filters.defaultProps = defaultProps;
 
-export default QueryFilters;
+export default Filters;
 export {
-  propTypes as QueryFiltersPropTypes,
-  defaultProps as QueryFiltersDefaultProps,
+  propTypes as FiltersPropTypes,
+  defaultProps as FiltersDefaultProps,
   SupportedFilters,
-  displayQueryFilters,
-  QueryFiltersThemeContext
+  displayFilters,
+  FiltersThemeContext
 };

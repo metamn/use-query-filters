@@ -2,16 +2,13 @@ import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import QueryFilter, {
-  QueryFilterPropTypes,
-  isFilterWellDefined
-} from "./QueryFilter";
+import Filter, { FilterPropTypes, isFilterWellDefined } from "./Filter";
 
-import { SupportedFilters, QueryFiltersDefaultProps } from "../QueryFilters";
+import { SupportedFilters, FiltersDefaultProps } from "../Filters";
 
-const QueryFiltersThemeContext = React.createContext();
+const FiltersThemeContext = React.createContext();
 
-describe("The QueryFilter component - behavior", function() {
+describe("The Filter component - behavior", function() {
   test("Checks if a filter is well defined.", () => {
     const supported = SupportedFilters[0];
     const { filter, paramTypes } = supported;
@@ -63,31 +60,31 @@ describe("The QueryFilter component - behavior", function() {
   });
 });
 
-describe("The QueryFilter component - structure", function() {
-  it("Renders a component with the `QueryFilter` class name", () => {
-    const { renderers } = QueryFiltersDefaultProps;
+describe("The Filter component - structure", function() {
+  it("Renders a component with the `Filter` class name", () => {
+    const { renderers } = FiltersDefaultProps;
 
     const { container } = render(
-      <QueryFiltersThemeContext.Provider value={renderers}>
-        <QueryFilter />
-      </QueryFiltersThemeContext.Provider>
+      <FiltersThemeContext.Provider value={renderers}>
+        <Filter />
+      </FiltersThemeContext.Provider>
     );
 
-    expect(container.firstChild).toHaveClass("QueryFilter");
+    expect(container.firstChild).toHaveClass("Filter");
   });
 
   it("Has a `label` input prop", () => {
-    const { label } = QueryFilterPropTypes;
+    const { label } = FilterPropTypes;
     expect(label).toBeDefined();
   });
 
   it("Has a `queryParam` input prop", () => {
-    const { queryParam } = QueryFilterPropTypes;
+    const { queryParam } = FilterPropTypes;
     expect(queryParam).toBeDefined();
   });
 
   it("Has a `input` input prop", () => {
-    const { input } = QueryFilterPropTypes;
+    const { input } = FilterPropTypes;
     expect(input).toBeDefined();
   });
 

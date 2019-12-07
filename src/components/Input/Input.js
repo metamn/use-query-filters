@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SupportedFilters } from "../QueryFilters";
+import { SupportedFilters } from "../Filters";
 import { QueryParamPropTypes, QueryParamDefaultProps } from "../QueryParam";
 
 /**
@@ -204,17 +204,17 @@ const defaultProps = {
 /**
  * Displays the component
  */
-const QueryInput = props => {
-  return <div className="QueryInput">QueryInput</div>;
+const Input = props => {
+  return <div className="Input">Input</div>;
 };
 
-QueryInput.propTypes = propTypes;
-QueryInput.defaultProps = defaultProps;
+Input.propTypes = propTypes;
+Input.defaultProps = defaultProps;
 
-export default QueryInput;
+export default Input;
 export {
-  propTypes as QueryInputPropTypes,
-  defaultProps as QueryInputDefaultProps,
+  propTypes as InputPropTypes,
+  defaultProps as InputDefaultProps,
   InputTextPropTypes,
   InputTextDefaultProps,
   InputCheckboxPropTypes,
