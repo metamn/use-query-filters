@@ -7,7 +7,61 @@ import QueryFilter, {
   isFilterWellDefined
 } from "./QueryFilter";
 
-describe("The QueryFilter component", function() {
+import { SupportedFilters } from "../QueryFilters";
+
+describe("The QueryFilter component - behavior", function() {
+  test("Checks if a filter is well defined.", () => {
+    const supported = SupportedFilters[0];
+    const { filter, paramTypes } = supported;
+    const paramType = paramTypes[0];
+
+    const props = {
+      queryParam: {
+        type: paramType
+      },
+      input: {
+        type: filter
+      }
+    };
+
+    expect(isFilterWellDefined({ filter: props })).toStrictEqual(true);
+  });
+
+  test("Fails when the filter's param type is not well defined.", () => {
+    const supported = SupportedFilters[0];
+    const { filter } = supported;
+
+    const props = {
+      queryParam: {
+        type: "random"
+      },
+      input: {
+        type: filter
+      }
+    };
+
+    expect(isFilterWellDefined({ filter: props })).toStrictEqual(false);
+  });
+
+  test("Fails when the filter's type is not well defined.", () => {
+    const supported = SupportedFilters[0];
+    const { paramTypes } = supported;
+    const paramType = paramTypes[0];
+
+    const props = {
+      queryParam: {
+        type: paramType
+      },
+      input: {
+        type: "random"
+      }
+    };
+
+    expect(isFilterWellDefined({ filter: props })).toStrictEqual(false);
+  });
+});
+
+describe("The QueryFilter component - structure", function() {
   it("Renders a component with the `QueryFilter` class name", () => {
     const { container } = render(<QueryFilter />);
     expect(container.firstChild).toHaveClass("QueryFilter");
