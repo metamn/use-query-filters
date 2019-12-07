@@ -29,8 +29,8 @@ const propTypes = {
  * Defines the default props
  */
 const defaultProps = {
-  name: "query-param",
-  type: "query-param-type"
+  name: "q",
+  type: "StringParam"
 };
 
 /**

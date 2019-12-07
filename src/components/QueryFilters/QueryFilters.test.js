@@ -8,7 +8,14 @@ import QueryFilters, {
   displayQueryFilters
 } from "./QueryFilters";
 
-describe("The QueryFilters component", function() {
+describe("The QueryFilters component - behavior", function() {
+  it("Displays the filters", () => {
+    const { container } = render(<QueryFilters />);
+    expect(container.firstChild.firstChild).toHaveClass("QueryFilter");
+  });
+});
+
+describe("The QueryFilters component - structure", function() {
   it("Renders a component with the `QueryFilters` class name", () => {
     const { container } = render(<QueryFilters />);
     expect(container.firstChild).toHaveClass("QueryFilters");

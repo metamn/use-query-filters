@@ -192,12 +192,16 @@ const InputTextDefaultProps = {
 => this will result in strange warnings and errors
  *
  */
-const propTypes = {};
+const propTypes = {
+  ...CommonInputPropTypes
+};
 
 /**
  * Defines the default props
  */
-const defaultProps = {};
+const defaultProps = {
+  ...CommonInputDefaultProps
+};
 
 /**
  * Displays the component
