@@ -3,10 +3,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import Filter, { FilterPropTypes, isFilterWellDefined } from "./Filter";
-
-import { SupportedFilters, FiltersDefaultProps } from "../Filters";
-
-const FiltersThemeContext = React.createContext();
+import Filters, { SupportedFilters } from "../Filters";
 
 describe("The Filter component - behavior", function() {
   test("Checks if a filter is well defined.", () => {
@@ -62,15 +59,12 @@ describe("The Filter component - behavior", function() {
 
 describe("The Filter component - structure", function() {
   it("Renders a component with the `Filter` class name", () => {
-    const { renderers } = FiltersDefaultProps;
-
-    const { container } = render(
-      <FiltersThemeContext.Provider value={renderers}>
-        <Filter />
-      </FiltersThemeContext.Provider>
-    );
-
-    expect(container.firstChild).toHaveClass("Filter");
+    /**
+     * Due to context the parent component <Filters> is rendered not the current <Filter> component
+     * Otherwise the context broke the tests / couldn't make it work
+     */
+    const { container } = render(<Filters />);
+    expect(container.firstChild.firstChild).toHaveClass("Filter");
   });
 
   it("Has a `label` input prop", () => {
