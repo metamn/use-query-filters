@@ -7,7 +7,9 @@ import QueryFilter, {
   isFilterWellDefined
 } from "./QueryFilter";
 
-import { SupportedFilters } from "../QueryFilters";
+import { SupportedFilters, QueryFiltersDefaultProps } from "../QueryFilters";
+
+const QueryFiltersThemeContext = React.createContext();
 
 describe("The QueryFilter component - behavior", function() {
   test("Checks if a filter is well defined.", () => {
@@ -63,7 +65,14 @@ describe("The QueryFilter component - behavior", function() {
 
 describe("The QueryFilter component - structure", function() {
   it("Renders a component with the `QueryFilter` class name", () => {
-    const { container } = render(<QueryFilter />);
+    const { renderers } = QueryFiltersDefaultProps;
+
+    const { container } = render(
+      <QueryFiltersThemeContext.Provider value={renderers}>
+        <QueryFilter />
+      </QueryFiltersThemeContext.Provider>
+    );
+
     expect(container.firstChild).toHaveClass("QueryFilter");
   });
 

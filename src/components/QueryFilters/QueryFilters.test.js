@@ -26,9 +26,9 @@ describe("The QueryFilters component - structure", function() {
     expect(filters).toBeDefined();
   });
 
-  it("Has a `theme` input prop", () => {
-    const { theme } = QueryFiltersPropTypes;
-    expect(theme).toBeDefined();
+  it("Has a `renderers` input prop", () => {
+    const { renderers } = QueryFiltersPropTypes;
+    expect(renderers).toBeDefined();
   });
 
   it("Defines a set of supported filters", () => {
