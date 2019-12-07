@@ -7,6 +7,7 @@ import QueryParam, {
 } from "../QueryParam";
 
 import { QueryInputDefaultProps, QueryInputPropTypes } from "../QueryInput";
+import { SupportedFilters } from "../QueryFilters";
 
 /**
  * Defines the prop types
@@ -43,6 +44,34 @@ const defaultProps = {
  * Checks if a filter is well defined.
  */
 const isFilterWellDefined = props => {
+  const { filter } = props;
+  const { queryParam, input } = filter;
+  const { type: queryParamType } = queryParam;
+  const { type: inputType } = input;
+
+  /**
+   * Checks the filter type
+   */
+  const f = SupportedFilters.find(item => item.filter === inputType);
+
+  if (!f) {
+    console.log("Unsupported filter type: ", inputType);
+    return false;
+  }
+
+  /**
+   * Checks the param type
+   */
+  const wellDefined = f.paramTypes.find(item => item === queryParamType);
+
+  if (!wellDefined) {
+    console.log(
+      `This filter (${inputType}) doesn't supports this query param type: `,
+      queryParamType
+    );
+    return false;
+  }
+
   return true;
 };
 
