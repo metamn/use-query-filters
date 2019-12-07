@@ -15,14 +15,14 @@ const defaultProps = {};
  * Displays the component
  */
 const InputRadio = props => {
-  return <div className="InputRadio">InputRadio</div>;
+  return <div className="InputRadio">InputRadio Naked</div>;
 };
 
 InputRadio.propTypes = propTypes;
 InputRadio.defaultProps = defaultProps;
 
-export default InputRadio;
 export {
+  InputRadio,
   propTypes as InputRadioPropTypes,
   defaultProps as InputRadioDefaultProps
 };

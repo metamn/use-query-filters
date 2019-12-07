@@ -1,5 +1,5 @@
 export {
-  default,
+  InputText,
   InputTextPropTypes,
   InputTextDefaultProps
 } from "./InputText";

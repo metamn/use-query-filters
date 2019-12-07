@@ -15,14 +15,16 @@ const defaultProps = {};
  * Displays the component
  */
 const InputRangeMultiHandle = props => {
-  return <div className="InputRangeMultiHandle">InputRangeMultiHandle</div>;
+  return (
+    <div className="InputRangeMultiHandle">InputRangeMultiHandle Naked</div>
+  );
 };
 
 InputRangeMultiHandle.propTypes = propTypes;
 InputRangeMultiHandle.defaultProps = defaultProps;
 
-export default InputRangeMultiHandle;
 export {
+  InputRangeMultiHandle,
   propTypes as InputRangeMultiHandlePropTypes,
   defaultProps as InputRangeMultiHandleDefaultProps
 };

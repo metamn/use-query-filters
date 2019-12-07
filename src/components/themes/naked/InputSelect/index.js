@@ -1,5 +1,5 @@
 export {
-  default,
+  InputSelect,
   InputSelectPropTypes,
   InputSelectDefaultProps
 } from "./InputSelect";

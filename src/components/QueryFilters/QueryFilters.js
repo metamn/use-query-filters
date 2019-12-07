@@ -10,7 +10,14 @@ import QueryFilter, {
 
 import { dataDefault } from "../../App.data";
 
-import { InputCheckboxNaked } from "../themes/naked";
+import {
+  InputCheckboxNaked,
+  InputRadioNaked,
+  InputRangeMultiHandleNaked,
+  InputSelectNaked,
+  InputTextNaked
+} from "../themes/naked";
+import InputRadio from "../themes/naked/InputRadio";
 
 /**
  * Defines the prop types
@@ -105,7 +112,13 @@ const QueryFiltersThemeContext = React.createContext();
 const QueryFilters = props => {
   const { theme } = props;
 
-  let queryFiltersThemeContext = { InputCheckbox: InputCheckboxNaked };
+  let queryFiltersThemeContext = {
+    InputCheckbox: InputCheckboxNaked,
+    InputRadio: InputRadioNaked,
+    InputRangeMultiHandle: InputRangeMultiHandleNaked,
+    InputSelect: InputSelectNaked,
+    InputText: InputTextNaked
+  };
 
   return (
     <QueryFiltersThemeContext.Provider value={queryFiltersThemeContext}>

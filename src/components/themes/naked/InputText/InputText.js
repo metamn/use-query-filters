@@ -15,14 +15,14 @@ const defaultProps = {};
  * Displays the component
  */
 const InputText = props => {
-  return <div className="InputText">InputText</div>;
+  return <div className="InputText">InputText Naked</div>;
 };
 
 InputText.propTypes = propTypes;
 InputText.defaultProps = defaultProps;
 
-export default InputText;
 export {
+  InputText,
   propTypes as InputTextPropTypes,
   defaultProps as InputTextDefaultProps
 };

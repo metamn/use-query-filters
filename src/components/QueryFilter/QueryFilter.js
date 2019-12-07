@@ -75,10 +75,16 @@ const isFilterWellDefined = props => {
  * Displays the component
  */
 const QueryFilter = props => {
-  const { label, input, queryParam } = props;
+  const { label, queryParam, input } = props;
   const { type } = input;
 
-  const { InputCheckbox } = useContext(QueryFiltersThemeContext);
+  const {
+    InputText,
+    InputCheckbox,
+    InputSelect,
+    InputRangeMultiHandle,
+    InputRadio
+  } = useContext(QueryFiltersThemeContext);
 
   const params = { label, queryParam, ...input };
 
@@ -86,10 +92,27 @@ const QueryFilter = props => {
 
   switch (type) {
     case "text":
+      result = <InputText {...params} />;
+      break;
+
+    case "checkbox":
       result = <InputCheckbox {...params} />;
       break;
 
+    case "select":
+      result = <InputSelect {...params} />;
+      break;
+
+    case "radio":
+      result = <InputRadio {...params} />;
+      break;
+
+    case "range-multi-handle":
+      result = <InputRangeMultiHandle {...params} />;
+      break;
+
     default:
+      console.log("Invalid input type:", type);
       break;
   }
 

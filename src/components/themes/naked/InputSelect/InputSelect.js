@@ -15,14 +15,14 @@ const defaultProps = {};
  * Displays the component
  */
 const InputSelect = props => {
-  return <div className="InputSelect">InputSelect</div>;
+  return <div className="InputSelect">InputSelect Naked</div>;
 };
 
 InputSelect.propTypes = propTypes;
 InputSelect.defaultProps = defaultProps;
 
-export default InputSelect;
 export {
+  InputSelect,
   propTypes as InputSelectPropTypes,
   defaultProps as InputSelectDefaultProps
 };
