@@ -55,8 +55,6 @@ const loadValue = props => {
  * Defines the common props for the inputs with items
  */
 const InputWithItemsPropTypes = props => {
-  const { inputType } = props;
-
   return {
     label: PropTypes.string,
     items: PropTypes.arrayOf(

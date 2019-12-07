@@ -1,11 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import QueryParam, {
-  QueryParamDefaultProps,
-  QueryParamPropTypes
-} from "../QueryParam";
-
+import { QueryParamDefaultProps, QueryParamPropTypes } from "../QueryParam";
 import { QueryInputDefaultProps, QueryInputPropTypes } from "../QueryInput";
 import { SupportedFilters } from "../QueryFilters";
 
