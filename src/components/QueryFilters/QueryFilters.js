@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 
 import QueryFilter, {
   isFilterWellDefined,
-  QueryFilterPropTypes,
-  QueryFilterDefaultProps
+  QueryFilterPropTypes
+  //QueryFilterDefaultProps
 } from "../QueryFilter";
+
+import { dataDefault } from "../../App.data";
 
 /**
  * Defines the prop types
@@ -23,7 +25,8 @@ const propTypes = {
  * Defines the default props
  */
 const defaultProps = {
-  filters: Array(1).fill(QueryFilterDefaultProps)
+  //filters: Array(1).fill(QueryFilterDefaultProps)
+  filters: dataDefault.filters
 };
 
 /**
