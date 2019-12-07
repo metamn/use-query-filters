@@ -179,35 +179,25 @@ const InputTextDefaultProps = {
 
 /**
  * Defines the prop types
- *
- * // TODO The `...` spread operator will cause strange errors ...
- */
-const propTypes1 = {
+ * 
+ * - We can't merge them all like:
+ * 
+ * {
   ...InputTextPropTypes,
   ...InputCheckboxPropTypes,
   ...InputSelectPropTypes,
   ...InputRadioPropTypes,
   ...InputRangeMultiHandlePropTypes
-};
-
-const propTypes = Object.assign(
-  InputTextPropTypes,
-  InputCheckboxPropTypes,
-  InputSelectPropTypes,
-  InputRadioPropTypes,
-  InputRangeMultiHandlePropTypes
-);
+}
+=> this will result in strange warnings and errors
+ *
+ */
+const propTypes = {};
 
 /**
  * Defines the default props
  */
-const defaultProps = Object.assign(
-  InputTextDefaultProps,
-  InputCheckboxDefaultProps,
-  InputSelectDefaultProps,
-  InputRadioDefaultProps,
-  InputRangeMultiHandleDefaultProps
-);
+const defaultProps = {};
 
 /**
  * Displays the component

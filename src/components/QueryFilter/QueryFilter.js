@@ -27,7 +27,7 @@ const propTypes = {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
    */
-  input: PropTypes.string.isRequired
+  input: PropTypes.shape(QueryInputPropTypes).isRequired
 };
 
 /**
@@ -36,7 +36,7 @@ const propTypes = {
 const defaultProps = {
   label: "Filter title",
   queryParam: QueryParamDefaultProps,
-  input: "x"
+  input: QueryInputDefaultProps
 };
 
 /**
