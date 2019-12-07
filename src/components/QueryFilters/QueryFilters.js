@@ -4,10 +4,13 @@ import PropTypes from "prop-types";
 import QueryFilter, {
   isFilterWellDefined,
   QueryFilterPropTypes
-  //QueryFilterDefaultProps
+  // This is for testing purposes only
+  // QueryFilterDefaultProps
 } from "../QueryFilter";
 
 import { dataDefault } from "../../App.data";
+
+import { InputCheckboxNaked } from "../themes*";
 
 /**
  * Defines the prop types
@@ -18,15 +21,21 @@ const propTypes = {
    *
    * @see App.data.js for the syntax
    */
-  filters: PropTypes.arrayOf(PropTypes.shape(QueryFilterPropTypes))
+  filters: PropTypes.arrayOf(PropTypes.shape(QueryFilterPropTypes)),
+  /**
+   * Defines the look and feel of the input controls
+   */
+  theme: PropTypes.string
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  //filters: Array(1).fill(QueryFilterDefaultProps)
-  filters: dataDefault.filters
+  // This is for testing purposes only
+  // filters: Array(1).fill(QueryFilterDefaultProps)
+  filters: dataDefault.filters,
+  theme: "naked"
 };
 
 /**
@@ -88,11 +97,31 @@ const displayQueryFilters = props => {
   );
 };
 
+const ThemeContext = React.createContext("light");
+
 /**
  * Displays the component
  */
 const QueryFilters = props => {
-  return <div className="QueryFilters">{displayQueryFilters(props)}</div>;
+  const { theme } = props;
+
+  let themeContext = {};
+  switch (theme) {
+    case "naked":
+      themeContext = {
+        InputCheckbox: InputCheckboxNaked
+      };
+      break;
+
+    default:
+      break;
+  }
+
+  return (
+    <ThemeContext.Provider value={themeContext}>
+      <div className="QueryFilters">{displayQueryFilters(props)}</div>
+    </ThemeContext.Provider>
+  );
 };
 
 QueryFilters.propTypes = propTypes;
