@@ -15,6 +15,14 @@ The component performs the following tasks:
 </details>
 
 <details>
+	<summary>###Defines which filter types are supported.
+- Also defines which query param type is supported by a filter.
+- Also defines how the query value should look like
+
+</summary>
+</details>
+
+<details>
 	<summary>###Displays the query filters
 
 - Only the well defined filters will be displayed

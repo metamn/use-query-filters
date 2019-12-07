@@ -22,6 +22,10 @@ The component performs the following tasks:
 	<summary>###Checks if a filter is well defined.
 
 </summary>
+* Checks the filter type
+
+* Checks the param type
+
 </details>
 
 <details>

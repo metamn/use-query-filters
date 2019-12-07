@@ -10,7 +10,33 @@ import QueryParam, {
   isParamTypeAsStringSupported
 } from "./QueryParam";
 
-describe("The QueryParam component", function() {
+import { StringParam } from "use-query-params";
+
+describe("The QueryParam component - behavior", function() {
+  test("Checks if a param type string is supported", () => {
+    const supported = SupportedParamTypesAsString[0];
+
+    expect(
+      isParamTypeAsStringSupported({ paramTypeAsString: supported })
+    ).toStrictEqual(0);
+  });
+
+  test("Returns error when a param type string is not supported", () => {
+    const supported = "random";
+
+    expect(
+      isParamTypeAsStringSupported({ paramTypeAsString: supported })
+    ).toStrictEqual(-1);
+  });
+
+  test("Returns a query param type object from a string", () => {
+    expect(
+      convertStringToQueryParamObject({ type: "StringParam" })
+    ).toStrictEqual(StringParam);
+  });
+});
+
+describe("The QueryParam component - structure", function() {
   it("Renders a component with the `QueryParam` class name", () => {
     const { container } = render(<QueryParam />);
     expect(container.firstChild).toHaveClass("QueryParam");
