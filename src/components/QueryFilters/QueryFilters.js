@@ -16,7 +16,7 @@ import {
   InputRangeMultiHandleNaked,
   InputSelectNaked,
   InputTextNaked
-} from "../themes/naked";
+} from "../renderers/naked";
 
 /**
  * Defines the prop types
@@ -29,9 +29,9 @@ const propTypes = {
    */
   filters: PropTypes.arrayOf(PropTypes.shape(QueryFilterPropTypes)),
   /**
-   * Defines the look and feel of the input controls
+   * Defines the renderers which will render the input controls
    */
-  theme: PropTypes.string
+  renderers: PropTypes.objectOf(PropTypes.func)
 };
 
 /**
@@ -41,7 +41,13 @@ const defaultProps = {
   // This is for testing purposes only
   // filters: Array(1).fill(QueryFilterDefaultProps)
   filters: dataDefault.filters,
-  theme: "naked"
+  renderers: {
+    InputCheckbox: InputCheckboxNaked,
+    InputRadio: InputRadioNaked,
+    InputRangeMultiHandle: InputRangeMultiHandleNaked,
+    InputSelect: InputSelectNaked,
+    InputText: InputTextNaked
+  }
 };
 
 /**
@@ -109,18 +115,10 @@ const QueryFiltersThemeContext = React.createContext();
  * Displays the component
  */
 const QueryFilters = props => {
-  const { theme } = props;
-
-  let queryFiltersThemeContext = {
-    InputCheckbox: InputCheckboxNaked,
-    InputRadio: InputRadioNaked,
-    InputRangeMultiHandle: InputRangeMultiHandleNaked,
-    InputSelect: InputSelectNaked,
-    InputText: InputTextNaked
-  };
+  const { renderers } = props;
 
   return (
-    <QueryFiltersThemeContext.Provider value={queryFiltersThemeContext}>
+    <QueryFiltersThemeContext.Provider value={renderers}>
       <div className="QueryFilters">{displayQueryFilters(props)}</div>
     </QueryFiltersThemeContext.Provider>
   );

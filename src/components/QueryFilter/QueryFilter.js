@@ -78,6 +78,8 @@ const QueryFilter = props => {
   const { label, queryParam, input } = props;
   const { type } = input;
 
+  console.log("qfthc:", QueryFiltersThemeContext);
+
   const {
     InputText,
     InputCheckbox,
