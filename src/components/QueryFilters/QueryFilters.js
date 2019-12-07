@@ -17,7 +17,6 @@ import {
   InputSelectNaked,
   InputTextNaked
 } from "../themes/naked";
-import InputRadio from "../themes/naked/InputRadio";
 
 /**
  * Defines the prop types
