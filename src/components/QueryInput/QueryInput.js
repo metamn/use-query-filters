@@ -7,12 +7,19 @@ import { QueryParamPropTypes, QueryParamDefaultProps } from "../QueryParam";
 /**
  * Defines the common props for all inputs
  */
-const CommonInputPropTypes = {
-  label: PropTypes.string,
-  type: PropTypes.oneOf(SupportedFilters.map(item => item.filter)),
-  name: PropTypes.string,
-  queryParam: PropTypes.shape(QueryParamPropTypes),
-  changeHandler: PropTypes.func
+const CommonInputPropTypes = () => {
+  const t =
+    SupportedFilters && SupportedFilters.map
+      ? SupportedFilters.map(item => item.filter)
+      : ["undefined"];
+
+  return {
+    label: PropTypes.string,
+    type: PropTypes.oneOf(t),
+    name: PropTypes.string,
+    queryParam: PropTypes.shape(QueryParamPropTypes),
+    changeHandler: PropTypes.func
+  };
 };
 
 /**
@@ -29,24 +36,33 @@ const CommonInputDefaultProps = {
 };
 
 /**
+ * Loads the `value` from `SupportedFilters`
+ */
+const loadValue = props => {
+  const { inputType } = props;
+
+  return (
+    (SupportedFilters &&
+      SupportedFilters.filter &&
+      SupportedFilters.filter(item => item.filter === inputType)
+        .map(item => item.paramValues)
+        .shift()) ||
+    {}
+  );
+};
+
+/**
  * Defines the common props for the inputs with items
  */
 const InputWithItemsPropTypes = props => {
   const { inputType } = props;
-
-  /**
-   * Loads the value from `SupportedFilters`
-   */
-  const v = SupportedFilters.filter(item => item.filter === inputType)
-    .map(item => item.paramValues)
-    .shift();
 
   return {
     label: PropTypes.string,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string,
-        value: v
+        value: loadValue(props)
       })
     )
   };
@@ -59,9 +75,7 @@ const InputRangeMultiHandlePropTypes = {
   ...CommonInputPropTypes,
   min: PropTypes.number,
   max: PropTypes.number,
-  value: SupportedFilters.filter(item => item.filter === "range-multi-handle")
-    .map(item => item.paramValues)
-    .shift()
+  value: loadValue({ inputType: "range-multi-handle" })
 };
 
 /**
@@ -165,8 +179,10 @@ const InputTextDefaultProps = {
 
 /**
  * Defines the prop types
+ *
+ * // TODO The `...` spread operator will cause strange errors ...
  */
-const propTypes = {
+const propTypes1 = {
   ...InputTextPropTypes,
   ...InputCheckboxPropTypes,
   ...InputSelectPropTypes,
@@ -174,23 +190,29 @@ const propTypes = {
   ...InputRangeMultiHandlePropTypes
 };
 
+const propTypes = Object.assign(
+  InputTextPropTypes,
+  InputCheckboxPropTypes,
+  InputSelectPropTypes,
+  InputRadioPropTypes,
+  InputRangeMultiHandlePropTypes
+);
+
 /**
  * Defines the default props
  */
-const defaultProps = {
-  ...InputTextDefaultProps,
-  ...InputCheckboxDefaultProps,
-  ...InputSelectDefaultProps,
-  ...InputRadioDefaultProps,
-  ...InputRangeMultiHandleDefaultProps
-};
+const defaultProps = Object.assign(
+  InputTextDefaultProps,
+  InputCheckboxDefaultProps,
+  InputSelectDefaultProps,
+  InputRadioDefaultProps,
+  InputRangeMultiHandleDefaultProps
+);
 
 /**
  * Displays the component
  */
 const QueryInput = props => {
-  console.log("props:", props);
-
   return <div className="QueryInput">QueryInput</div>;
 };
 

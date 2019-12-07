@@ -6,6 +6,8 @@ import QueryParam, {
   QueryParamPropTypes
 } from "../QueryParam";
 
+import { QueryInputDefaultProps, QueryInputPropTypes } from "../QueryInput";
+
 /**
  * Defines the prop types
  */
@@ -34,7 +36,7 @@ const propTypes = {
 const defaultProps = {
   label: "Filter title",
   queryParam: QueryParamDefaultProps,
-  input: "xxx"
+  input: "x"
 };
 
 /**
