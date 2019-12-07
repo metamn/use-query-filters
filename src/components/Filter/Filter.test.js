@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import Filter, { FilterPropTypes, isFilterWellDefined } from "./Filter";
+import { FilterPropTypes, isFilterWellDefined } from "./Filter";
 import Filters, { SupportedFilters } from "../Filters";
 
 describe("The Filter component - behavior", function() {
