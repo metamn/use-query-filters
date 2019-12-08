@@ -1,5 +1,1 @@
-export {
-  InputSelect,
-  InputSelectPropTypes,
-  InputSelectDefaultProps
-} from "./InputSelect";
+export { InputSelect } from "./InputSelect";
