@@ -4,5 +4,6 @@ export {
   FiltersDefaultProps,
   displayFilters,
   SupportedFilters,
-  FiltersThemeContext
+  RendererContext,
+  QueryParamsContext
 } from "./Filters";

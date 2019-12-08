@@ -5,6 +5,8 @@ import "@testing-library/jest-dom/extend-expect";
 import Filters, {
   FiltersPropTypes,
   SupportedFilters,
+  RendererContext,
+  QueryParamsContext,
   displayFilters
 } from "./Filters";
 
@@ -34,6 +36,14 @@ describe("The Filters component - structure", function() {
   it("Defines a set of supported filters", () => {
     const length = SupportedFilters.length;
     expect(length).toBeDefined();
+  });
+
+  it("Provides a renderer context", () => {
+    expect(RendererContext).toBeDefined();
+  });
+
+  it("Provides a query params context", () => {
+    expect(QueryParamsContext).toBeDefined();
   });
 
   it("Offers a `displayFilters` function", () => {

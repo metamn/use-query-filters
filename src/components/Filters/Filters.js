@@ -10,6 +10,8 @@ import Filter, {
   // FilterDefaultProps
 } from "../Filter";
 
+import { getQueryParamsFromFilters } from "../QueryParam";
+
 import { dataDefault } from "../../App.data";
 
 import {
@@ -111,18 +113,50 @@ const displayFilters = props => {
   );
 };
 
-const FiltersThemeContext = React.createContext();
+/**
+ * Sets up a context to make query params available down the component tree
+ */
+const QueryParamsContext = React.createContext();
+
+/**
+ * Sets up a context to make renderers available down the component tree
+ */
+const RendererContext = React.createContext();
 
 /**
  * Displays the component
  */
 const Filters = props => {
-  const { renderers } = props;
+  const { filters, renderers } = props;
+
+  /**
+   * Loads all available param types.
+   *
+   * - This will act as a whitelist for URL params
+   */
+  const queryParamsFromFilters = getQueryParamsFromFilters({
+    filters: filters
+  });
+
+  /**
+   * Sets up the query params
+   */
+  const [queryParams, setQueryParams] = useQueryParams(queryParamsFromFilters);
+
+  /**
+   * Sets up the context for the query params
+   */
+  const queryParamsContextValue = {
+    queryParams: queryParams,
+    setQueryParams: setQueryParams
+  };
 
   return (
-    <FiltersThemeContext.Provider value={renderers}>
-      <div className="Filters">{displayFilters(props)}</div>
-    </FiltersThemeContext.Provider>
+    <QueryParamsContext.Provider value={queryParamsContextValue}>
+      <RendererContext.Provider value={renderers}>
+        <div className="Filters">{displayFilters(props)}</div>
+      </RendererContext.Provider>
+    </QueryParamsContext.Provider>
   );
 };
 
@@ -135,5 +169,6 @@ export {
   defaultProps as FiltersDefaultProps,
   SupportedFilters,
   displayFilters,
-  FiltersThemeContext
+  RendererContext,
+  QueryParamsContext
 };

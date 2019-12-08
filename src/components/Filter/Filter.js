@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { QueryParamDefaultProps, QueryParamPropTypes } from "../QueryParam";
 import { InputDefaultProps, InputPropTypes } from "../Input";
-import { SupportedFilters, FiltersThemeContext } from "../Filters";
+import { SupportedFilters, RendererContext } from "../Filters";
 
 /**
  * Defines the prop types
@@ -84,7 +84,7 @@ const Filter = props => {
     InputSelect,
     InputRangeMultiHandle,
     InputRadio
-  } = useContext(FiltersThemeContext);
+  } = useContext(RendererContext);
 
   const params = { label, queryParam, ...input };
 
