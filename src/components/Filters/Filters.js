@@ -46,11 +46,11 @@ const defaultProps = {
   // filters: Array(1).fill(FilterDefaultProps)
   filters: dataDefault.filters,
   renderers: {
-    InputCheckbox: InputCheckboxNaked,
     InputRadio: InputRadioNaked,
     InputRangeMultiHandle: InputRangeMultiHandleNaked,
     InputSelect: InputSelectNaked,
-    InputText: InputTextNaked
+    InputText: InputTextNaked,
+    InputCheckbox: InputCheckboxNaked
   }
 };
 

@@ -97,16 +97,16 @@ const Filter = props => {
       result = <InputText {...params} />;
       break;
 
-    case "checkbox":
-      result = <InputCheckbox {...params} />;
-      break;
-
     case "select":
       result = <InputSelect {...params} />;
       break;
 
     case "radio":
       result = <InputRadio {...params} />;
+      break;
+
+    case "checkbox":
+      result = <InputCheckbox {...params} />;
       break;
 
     case "range-multi-handle":
