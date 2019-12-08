@@ -26,7 +26,8 @@ const InputCheckbox = props => {
   /**
    * Loads the value of the query param
    *
-   * // TODO this will still give a warning "A component is changing an uncontrolled input of type checkbox to be controlled." - once, then will go away
+   * // TODO this will still give a warning "A component is changing an uncontrolled input of type checkbox to be controlled." - once, then will go
+   * This is related to id/name/label htmlFor ... solved in Wakibi
    */
   const currentValue = queryParams[name] || [];
 
