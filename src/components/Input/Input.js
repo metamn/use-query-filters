@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 import { SupportedFilters } from "../Filters";
@@ -6,12 +5,14 @@ import { QueryParamPropTypes, QueryParamDefaultProps } from "../QueryParam";
 
 /**
  * Loads the `filter` from `SupportedFilters`
- */
+ * 
+ * for some reason it is not working ...
 const loadFilter = () => {
   return SupportedFilters && SupportedFilters.map
     ? SupportedFilters.map(item => item.filter)
     : ["undefined"];
 };
+*/
 
 /**
  * Loads the `value` from `SupportedFilters`
