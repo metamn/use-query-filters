@@ -11,5 +11,9 @@ export {
   InputSelectPropTypes,
   InputSelectDefaultProps,
   InputRangeMultiHandlePropTypes,
-  InputRangeMultiHandleDefaultProps
+  InputRangeMultiHandleDefaultProps,
+  inputTextHandleChange,
+  inputRadioHandleChange,
+  inputSelectHandleChange,
+  inputCheckboxHandleChange
 } from "./Input";
