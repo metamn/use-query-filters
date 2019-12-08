@@ -1,5 +1,1 @@
-export {
-  InputRangeMultiHandle,
-  InputRangeMultiHandlePropTypes,
-  InputRangeMultiHandleDefaultProps
-} from "./InputRangeMultiHandle";
+export { InputRangeMultiHandle } from "./InputRangeMultiHandle";

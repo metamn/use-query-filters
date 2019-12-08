@@ -73,4 +73,4 @@ const InputCheckbox = props => {
 InputCheckbox.propTypes = InputCheckboxPropTypes;
 InputCheckbox.defaultProps = InputCheckboxDefaultProps;
 
-export { InputCheckbox };
+export { InputCheckbox, InputCheckboxPropTypes, InputCheckboxDefaultProps };
