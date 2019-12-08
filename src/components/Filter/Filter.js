@@ -22,6 +22,8 @@ const propTypes = {
   /**
    * The input control to display and manage the filter behavior
    *
+   * // TODO this should be a list of specific input proptypes instead of this general one. Perhaps the testing errors and console warnings will go away then ...
+   *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
    */
   input: PropTypes.shape(InputPropTypes).isRequired

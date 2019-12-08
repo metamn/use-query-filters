@@ -47,7 +47,7 @@ const loadValue = props => {
       SupportedFilters.filter(item => item.filter === inputType)
         .map(item => item.paramValues)
         .shift()) ||
-    {}
+    PropTypes.any
   );
 };
 
@@ -189,16 +189,29 @@ const InputTextDefaultProps = {
 }
 => this will result in strange warnings and errors
  *
+ * - Therefore we will collect by hand all props
  */
 const propTypes = {
-  ...CommonInputPropTypes
+  ...CommonInputPropTypes,
+  ...InputWithItemsPropTypes, // This will add `items`
+  min: PropTypes.number,
+  max: PropTypes.number,
+  value: PropTypes.any
 };
 
 /**
  * Defines the default props
  */
 const defaultProps = {
-  ...CommonInputDefaultProps
+  ...CommonInputDefaultProps,
+  items: [
+    {
+      label: "Radio 1",
+      value: "radio-1"
+    }
+  ],
+  min: 0,
+  max: 0
 };
 
 /**
