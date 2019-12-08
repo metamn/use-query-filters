@@ -1,14 +1,8 @@
 import React, { useContext } from "react";
 
 import {
-  /**
-   * These will act as prop types
-   */
   InputCheckboxPropTypes,
   InputCheckboxDefaultProps,
-  /**
-   * The change handler can be reused by other checkbox renderers
-   */
   inputCheckboxHandleChange
 } from "../../../Input";
 

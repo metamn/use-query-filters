@@ -5,34 +5,12 @@ import { SupportedFilters } from "../Filters";
 import { QueryParamPropTypes, QueryParamDefaultProps } from "../QueryParam";
 
 /**
- * Defines the common props for all inputs
+ * Loads the `filter` from `SupportedFilters`
  */
-const CommonInputPropTypes = () => {
-  const t =
-    SupportedFilters && SupportedFilters.map
-      ? SupportedFilters.map(item => item.filter)
-      : ["undefined"];
-
-  return {
-    label: PropTypes.string,
-    type: PropTypes.oneOf(t),
-    name: PropTypes.string,
-    queryParam: PropTypes.shape(QueryParamPropTypes),
-    changeHandler: PropTypes.func
-  };
-};
-
-/**
- * Defines the default values for the common props
- */
-const CommonInputDefaultProps = {
-  label: "Filter",
-  type: "text",
-  name: "query",
-  queryParam: QueryParamDefaultProps,
-  handleChange: () => {
-    console.log("handleChange");
-  }
+const loadFilter = () => {
+  return SupportedFilters && SupportedFilters.map
+    ? SupportedFilters.map(item => item.filter)
+    : ["undefined"];
 };
 
 /**
@@ -52,25 +30,79 @@ const loadValue = props => {
 };
 
 /**
- * Defines the common props for the inputs with items
+ * Defines the text input prop types
+ *
+ * Common prop types can't be shared across various input elements. They will result in strange test errors.
+ * Therefore all of them are added manually for all inputs
  */
-const InputWithItemsPropTypes = props => {
-  return {
-    label: PropTypes.string,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string,
-        value: loadValue(props)
-      })
-    )
-  };
+const InputTextPropTypes = {
+  label: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  queryParam: PropTypes.shape(QueryParamPropTypes),
+  changeHandler: PropTypes.func,
+  value: PropTypes.string
+};
+
+/**
+ * Defines the default props for the text input
+ */
+const InputTextDefaultProps = {
+  label: "Text",
+  type: "text",
+  name: "text",
+  queryParam: QueryParamDefaultProps,
+  handleChange: () => {
+    console.log("handleChange");
+  },
+  value: ""
+};
+
+/**
+ * Defines the checkbox input prop types
+ */
+const InputCheckboxPropTypes = {
+  label: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  queryParam: PropTypes.shape(QueryParamPropTypes),
+  changeHandler: PropTypes.func,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: loadValue({ inputType: "checkbox" })
+    })
+  )
+};
+
+/**
+ * Defines the default props for the checkbox input
+ */
+const InputCheckboxDefaultProps = {
+  label: "Checkbox",
+  type: "checkbox",
+  name: "checkbox",
+  queryParam: QueryParamDefaultProps,
+  handleChange: () => {
+    console.log("handleChange");
+  },
+  items: [
+    {
+      label: "Checkbox 1",
+      value: "checkbox-1"
+    }
+  ]
 };
 
 /**
  * Defines the range multi handle input prop types
  */
 const InputRangeMultiHandlePropTypes = {
-  ...CommonInputPropTypes,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  queryParam: PropTypes.shape(QueryParamPropTypes),
+  changeHandler: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
   value: loadValue({ inputType: "range-multi-handle" })
@@ -80,7 +112,13 @@ const InputRangeMultiHandlePropTypes = {
  * Defines the default props for the range multi handle input
  */
 const InputRangeMultiHandleDefaultProps = {
-  ...CommonInputDefaultProps,
+  label: "Range Multi Handle",
+  type: "range-multi-handle",
+  name: "range-multi-handle",
+  queryParam: QueryParamDefaultProps,
+  handleChange: () => {
+    console.log("handleChange");
+  },
   min: 0,
   max: 5,
   value: {
@@ -93,16 +131,30 @@ const InputRangeMultiHandleDefaultProps = {
  * Defines the select input prop types
  */
 const InputSelectPropTypes = {
-  ...CommonInputPropTypes,
-  ...InputWithItemsPropTypes({ inputType: "select" })
+  label: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  queryParam: PropTypes.shape(QueryParamPropTypes),
+  changeHandler: PropTypes.func,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: loadValue({ inputType: "select" })
+    })
+  )
 };
 
 /**
  * Defines the default props for the select input
  */
 const InputSelectDefaultProps = {
-  ...CommonInputDefaultProps,
   label: "Select",
+  type: "select",
+  name: "select",
+  queryParam: QueryParamDefaultProps,
+  handleChange: () => {
+    console.log("handleChange");
+  },
   items: [
     {
       label: "Select 1",
@@ -119,16 +171,30 @@ const InputSelectDefaultProps = {
  * Defines the radio input prop types
  */
 const InputRadioPropTypes = {
-  ...CommonInputPropTypes,
-  ...InputWithItemsPropTypes({ inputType: "radio" })
+  label: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  queryParam: PropTypes.shape(QueryParamPropTypes),
+  changeHandler: PropTypes.func,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: loadValue({ inputType: "radio" })
+    })
+  )
 };
 
 /**
  * Defines the default props for the radio input
  */
 const InputRadioDefaultProps = {
-  ...CommonInputDefaultProps,
   label: "Radio",
+  type: "radio",
+  name: "radio",
+  queryParam: QueryParamDefaultProps,
+  handleChange: () => {
+    console.log("handleChange");
+  },
   items: [
     {
       label: "Radio 1",
@@ -138,62 +204,29 @@ const InputRadioDefaultProps = {
 };
 
 /**
- * Defines the checkbox input prop types
- */
-const InputCheckboxPropTypes = {
-  ...CommonInputPropTypes,
-  ...InputWithItemsPropTypes({ inputType: "checkbox" })
-};
-
-/**
- * Defines the default props for the checkbox input
- */
-const InputCheckboxDefaultProps = {
-  ...CommonInputDefaultProps,
-  label: "Checkbox",
-  items: [
-    {
-      label: "Checkbox 1",
-      value: "checkbox-1"
-    }
-  ]
-};
-
-/**
- * Defines the text input prop types
- */
-const InputTextPropTypes = {
-  ...CommonInputPropTypes,
-  value: PropTypes.string
-};
-
-/**
- * Defines the default props for the text input
- */
-const InputTextDefaultProps = {
-  ...CommonInputDefaultProps,
-  value: ""
-};
-
-/**
  * Defines the prop types
- * 
- * - We can't merge them all like:
- * 
- * {
-  ...InputTextPropTypes,
-  ...InputCheckboxPropTypes,
-  ...InputSelectPropTypes,
-  ...InputRadioPropTypes,
-  ...InputRangeMultiHandlePropTypes
-}
-=> this will result in strange warnings and errors
  *
- * - Therefore we will collect by hand all props
+ * - We can't merge proptypes
+ * - Therefore we will collect them by hand from all props above
  */
 const propTypes = {
-  ...CommonInputPropTypes,
-  ...InputWithItemsPropTypes, // This will add `items`
+  label: PropTypes.string,
+  type: PropTypes.oneOf([
+    "text",
+    "checkbox",
+    "select",
+    "radio",
+    "range-multi-handle"
+  ]), // TODO use the loadFilter function ...
+  name: PropTypes.string,
+  queryParam: PropTypes.shape(QueryParamPropTypes),
+  changeHandler: PropTypes.func,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: loadValue({ inputType: "radio" })
+    })
+  ),
   min: PropTypes.number,
   max: PropTypes.number,
   value: PropTypes.any
@@ -203,7 +236,13 @@ const propTypes = {
  * Defines the default props
  */
 const defaultProps = {
-  ...CommonInputDefaultProps,
+  label: "Input",
+  type: "text",
+  name: "input",
+  queryParam: QueryParamDefaultProps,
+  handleChange: () => {
+    console.log("handleChange");
+  },
   items: [
     {
       label: "Radio 1",
