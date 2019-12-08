@@ -11,9 +11,9 @@ import Input, {
 } from "./Input";
 
 describe("The Input component", function() {
-  it("Renders a component with the `Input` class name", () => {
+  it("Renders nothing", () => {
     const { container } = render(<Input />);
-    expect(container.firstChild).toHaveClass("Input");
+    expect(container.firstChild).toBeNull();
   });
 
   it("Defines input types for Text", () => {

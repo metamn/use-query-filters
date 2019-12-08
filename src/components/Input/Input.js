@@ -205,7 +205,7 @@ const defaultProps = {
  * Displays the component
  */
 const Input = props => {
-  return <div className="Input">Input</div>;
+  return null;
 };
 
 Input.propTypes = propTypes;

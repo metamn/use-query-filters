@@ -5,5 +5,6 @@ export {
   SupportedParamTypes,
   SupportedParamTypesAsString,
   convertStringToQueryParamObject,
-  isParamTypeAsStringSupported
+  isParamTypeAsStringSupported,
+  getQueryParamsFromFilters
 } from "./QueryParam";

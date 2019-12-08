@@ -58,6 +58,27 @@ const SupportedParamTypesAsString = [
 ];
 
 /**
+ * Collects the query params from filters
+ */
+const getQueryParamsFromFilters = props => {
+  const { filters } = props;
+
+  return (
+    filters &&
+    filters.filter &&
+    filters
+      .filter(item => item.queryParam)
+      .map(item => item.queryParam)
+      .reduce((result, item) => {
+        const { name, type } = item;
+
+        result[name] = convertStringToQueryParamObject({ type: type });
+        return result;
+      }, {})
+  );
+};
+
+/**
  * Returns a query param type object from a string
  */
 const convertStringToQueryParamObject = props => {
@@ -86,7 +107,7 @@ const isParamTypeAsStringSupported = props => {
  * Displays the component
  */
 const QueryParam = props => {
-  return <div className="QueryParam">QueryParam</div>;
+  return null;
 };
 
 QueryParam.propTypes = propTypes;
@@ -99,5 +120,6 @@ export {
   SupportedParamTypes,
   SupportedParamTypesAsString,
   convertStringToQueryParamObject,
-  isParamTypeAsStringSupported
+  isParamTypeAsStringSupported,
+  getQueryParamsFromFilters
 };
